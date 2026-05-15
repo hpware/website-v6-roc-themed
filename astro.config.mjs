@@ -2,7 +2,6 @@
 
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel";
 import { defineConfig, fontProviders } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
@@ -12,7 +11,6 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: "https://v6.yuanhau.com",
-  adapter: vercel(),
   integrations: [mdx(), sitemap(), react()],
 
   fonts: [

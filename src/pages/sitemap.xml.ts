@@ -1,7 +1,5 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import { api } from "../../convex/_generated/api";
-import { convex } from "../lib/convex";
 
 const SITE = "https://v6.yuanhau.com";
 
@@ -75,20 +73,6 @@ export const GET: APIRoute = async () => {
       priority: 0.6,
     })),
   );
-
-  try {
-    const pages = await convex.query(api.pages.listPublished, {});
-    entries.push(
-      ...pages.map((page) => ({
-        url: absoluteUrl(`/pages/${page.slug}/`),
-        lastmod: new Date(page.updated_at),
-        changefreq: "monthly" as const,
-        priority: 0.6,
-      })),
-    );
-  } catch {
-    // Keep the sitemap buildable even when Convex is unavailable locally.
-  }
 
   return new Response(renderSitemap(entries), {
     headers: {

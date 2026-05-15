@@ -9,31 +9,22 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "convex": "convex dev",
-    "convex:dev": "convex dev",
-    "convex:deploy": "convex deploy"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.4",
     "@astrojs/react": "^5.0.4",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/vercel": "^10.0.6",
     "@lucide/astro": "^1.14.0",
     "@tailwindcss/vite": "^4.3.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "astro": "^6.3.1",
-    "convex": "^1.38.0",
-    "lucide-react": "^1.14.0",
-    "marked-react": "^4.0.0",
-    "prism-react-renderer": "^2.4.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "sharp": "^0.34.3",
-    "tailwindcss": "^4.3.0",
-    "uuid": "^14.0.0"
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
