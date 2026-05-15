@@ -1,0 +1,27 @@
+---
+import Link from "./Link.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const tabs = [
+    { name: "回首頁", url: "/" },
+    { name: "公告資訊", url: "/blog" },
+    { name: "免費架服務", url: "/hosting" },
+    { name: "補丁專區", url: "/blog/patching-copydotfail/" },
+];
+---
+
+<header class="roc-utility-header" aria-label="上方快速導覽列">
+    <div class="roc-utility-inner">
+        <span class="roc-utility-badge">元皓網站 v6 ß｜服務e化專區</span>
+        <nav aria-label="快速導覽">
+            {
+                tabs.map((tab) => (
+                    <Link href={tab.url} class="roc-utility-link">
+                        {tab.name}
+                    </Link>
+                ))
+            }
+        </nav>
+        <ThemeToggle />
+    </div>
+</header>

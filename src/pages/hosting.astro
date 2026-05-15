@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Default.astro";
+import { Server, MonitorCog } from "@lucide/astro";
+import Link from "../components/Link.astro";
+---
+
+<Layout title="免費架" description="免費的伺服器 (只有 IPv6)">
+    <span slot="section">IPv6 主機服務 ＞ e化申辦說明</span>
+
+    <section class="roc-panel">
+        <div class="roc-panel-heading">【IPv6 免費架 e化線上申辦服務說明】</div>
+        <div class="grid gap-[8px] p-[8px] md:grid-cols-[1fr_260px]">
+            <div>
+                <h1 class="roc-home-title flex items-center gap-[6px]">
+                    <Server class="h-12 w-12" />免費架服務專區
+                </h1>
+                <div class="roc-home-notice">
+                    <strong>重要公告：</strong>
+                    本項服務資源有限，原則限制每人 1 個 HE 的 IPv6 與 1 核心 / 1G 記憶體之主機。請大家一起配合，讓系統作業更加順利。一起加油！
+                </div>
+                <table class="roc-data-table" aria-label="免費架服務限制表">
+                    <tbody>
+                        <tr>
+                            <th>服務名稱</th>
+                            <td>IPv6 免費架主機服務</td>
+                        </tr>
+                        <tr>
+                            <th>資源配額</th>
+                            <td>1 核心 / 1G 記憶體 / 1 組 HE IPv6</td>
+                        </tr>
+                        <tr>
+                            <th>申辦限制</th>
+                            <td>每人限申辦 1 台，伺服器爆掉就沒有了。</td>
+                        </tr>
+                        <tr>
+                            <th>管理權限</th>
+                            <td>本人保留移除、調整、暫停服務之相關權利。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <aside class="border-2 border-dashed border-red-700 bg-[hsl(52_96%_74%)] p-[7px] text-black">
+                <b>◆ 服務窗口</b>
+                <p class="my-[7px] text-sm">如欲進行管理作業，請點選下方按鈕進入管理介面。本系統將協助您完成相關 e化服務流程。</p>
+                <Link href="https://manageut.yhw.tw" class="roc-button inline-flex items-center gap-1">
+                    <MonitorCog class="h-5 w-5" /> 管理介面
+                </Link>
+                <p class="mt-[9px] text-xs">※ 資料填寫時請慢慢確認，請注意，每一項都很重要喔！</p>
+            </aside>
+        </div>
+    </section>
+</Layout>

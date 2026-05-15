@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Default.astro";
+import { TriangleAlert } from "@lucide/astro";
+---
+
+<Layout title="404 找不到這個頁面">
+    <span slot="section">系統訊息 ＞ 異常頁面提示</span>
+
+    <section class="roc-panel text-center">
+        <div class="roc-panel-heading">【系統異常通知】404 找不到這個頁面</div>
+        <div class="p-[18px]">
+            <TriangleAlert class="mx-auto h-24 w-24 text-red-600" />
+            <h1 class="roc-home-title">404 找不到這個頁面</h1>
+            <p>抱歉，您訪問的頁面不存在，造成不便之處，敬請見諒。</p>
+            <p>請檢查網址是否正確，或返回<a href="/">首頁</a>繼續瀏覽本系統相關 e化服務。</p>
+        </div>
+    </section>
+</Layout>

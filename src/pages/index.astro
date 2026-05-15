@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Default.astro";
+import Link from "../components/Link.astro";
+---
+
+<Layout title="首頁">
+    <span slot="section">網站首頁暨服務e化入口</span>
+
+    <section class="roc-home-notice">
+        <strong>【歡迎蒞臨】</strong>
+        本網站為元皓個人資訊服務平台，提供文章公告、主機申辦資訊及相關維護紀錄瀏覽服務。請依序閱讀各項資訊，並歡迎多加利用！
+    </section>
+
+    <div class="roc-home-grid">
+        <section class="roc-panel">
+            <div class="roc-panel-heading">◆ 本站重點服務項目說明</div>
+            <div class="p-[8.2px]">
+                <h1 class="roc-home-title">元皓資訊服務e化平台</h1>
+                <p class="mb-[7px]">
+                    本網站持續推動個人資訊公開、文章紀錄保存、服務狀態揭露與便民查詢作業，期能建立一個糙但能用、老派但誠懇的網路服務窗口。
+                </p>
+                <table class="roc-data-table" aria-label="本站服務項目表">
+                    <thead>
+                        <tr>
+                            <th>服務類別</th>
+                            <th>辦理內容</th>
+                            <th>目前狀態</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>公告資訊</td>
+                            <td>最新文章、事件紀錄、網站搬遷與維護說明。</td>
+                            <td>正常提供</td>
+                        </tr>
+                        <tr>
+                            <td>主機服務</td>
+                            <td>IPv6 免費架相關限制及管理介面入口。</td>
+                            <td>容量有限</td>
+                        </tr>
+                        <tr>
+                            <td>歷史版本</td>
+                            <td>舊版網站連結與原始碼查詢，便利各界參考。</td>
+                            <td>持續典藏</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="roc-quick-buttons">
+                <Link href="/blog" class="roc-button">進入最新公告資訊瀏覽專區</Link>
+                <Link href="/hosting" class="roc-button">IPv6 主機e化申辦說明</Link>
+                <Link href="https://github.com/hpware/website-v6" class="roc-button">網站原始碼查詢</Link>
+            </div>
+        </section>
+
+        <section class="roc-panel">
+            <div class="roc-panel-heading">★ 便民提醒事項</div>
+            <div class="p-[7px] text-sm">
+                <p class="mb-[6px]"><b>一、</b> 若頁面呈現略為擁擠，係為提升資訊揭露完整性，敬請安心使用。</p>
+                <p class="mb-[6px]"><b>二、</b> 深色模式仍保留舊式入口網站精神，切換時請慢慢確認，不要著急。</p>
+                <p class="mb-[6px]"><b>三、</b> 如遇連結失效或內容異常，請洽服務信箱，本網站將儘速辦理相關維護作業。</p>
+                <div class="mt-[8.6px] border-2 border-dashed border-red-700 bg-[hsl(52_96%_74%)] p-[6px] text-black">
+                    ※ 本平台以「能用就好、持續改善」為服務宗旨，誠摯感謝您的瀏覽與指教！
+                </div>
+            </div>
+        </section>
+    </div>
+</Layout>

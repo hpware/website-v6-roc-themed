@@ -1,0 +1,72 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Default.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Prose from "../../components/Prose.astro";
+import { CalendarSync, Calendar, ChevronLeft } from "@lucide/astro";
+import Link from "../../components/Link.astro";
+
+export async function getStaticPaths() {
+    const posts = await getCollection(
+        "blog",
+        ({ data }) => data.status === "published",
+    );
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: post,
+    }));
+}
+type Props = CollectionEntry<"blog">;
+const post = Astro.props;
+const { Content } = await render(post);
+const { heroImage, pubDate, updatedDate } = post.data;
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+    <span slot="section">公告資訊 ＞ 文章內容瀏覽 ＞ {post.data.title}</span>
+
+    <article class="roc-panel pb-[8px]">
+        <div class="roc-panel-heading">【公告內容資訊說明】{post.data.title}</div>
+        {
+            heroImage && (
+                <div class="hero-image p-[7px] pb-0">
+                    <Image
+                        width={1020}
+                        height={510}
+                        src={heroImage}
+                        alt=""
+                        class="w-full border-[3px] border-ridge border-gray-500 object-cover"
+                    />
+                </div>
+            )
+        }
+        <div class="p-[8.2px]">
+            <div class="mb-[7px] border-2 border-dashed border-red-700 bg-[hsl(52_94%_78%)] p-[6px] text-black">
+                <Link href="/blog/" class="roc-link text-sm">
+                    <ChevronLeft class="h-5 w-5" />返回公告列表
+                </Link>
+                <h1 class="mt-[5px] mb-[4px] font-[DFKai-SB] text-4xl font-bold text-[#000095] drop-shadow-[2px_2px_0_#ffe66d] dark:text-cyan-300">
+                    {post.data.title}
+                </h1>
+                <div class="flex flex-row flex-wrap gap-[7px] text-sm">
+                    <div class="flex flex-row items-center space-x-1 text-center">
+                        <Calendar class="h-5 w-5" />
+                        <span>發布日期：</span><FormattedDate date={pubDate} />
+                    </div>
+                    {
+                        updatedDate && (
+                            <div class="flex flex-row items-center space-x-1 text-center">
+                                <CalendarSync class="h-5 w-5" />
+                                <span>修正日期：</span><FormattedDate date={updatedDate} />
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+            <Prose>
+                <Content />
+            </Prose>
+        </div>
+    </article>
+</Layout>

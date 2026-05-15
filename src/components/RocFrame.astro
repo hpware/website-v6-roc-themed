@@ -1,0 +1,100 @@
+---
+import Link from "./Link.astro";
+
+const serviceLinks = [
+    { name: "本站首頁", href: "/" },
+    { name: "最新公告資訊瀏覽專區", href: "/blog" },
+    { name: "IPv6 主機 e化申辦服務", href: "/hosting" },
+    { name: "補丁公告與維護紀錄", href: "/blog/patching-copydotfail/" },
+];
+
+const notices = [
+    "【公告】本站已完成華國美學服務e化版面更新，敬請各界先進多加利用。",
+    "※ 系統若於深夜進行例行維護，造成不便之處，敬請見諒。",
+    "★ 歡迎蒞臨元皓資訊服務平台，請依序瀏覽各項便民資訊。",
+];
+---
+
+<div class="roc-shell">
+    <div class="roc-flag-strip" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <section class="roc-top-banner" aria-label="網站宣導橫幅">
+        <div class="roc-emblem">青天白日<br />資訊服務</div>
+        <div class="roc-banner-copy">
+            <p class="roc-kicker">中華民國風格網頁維運成果展示</p>
+            <div class="roc-wordart" data-shadow="元皓網站資訊服務平台">
+                <span>元皓</span><span>網站</span><span>資訊服務平台</span>
+            </div>
+            <p class="roc-slogan">推動個人網站服務e化・落實便民瀏覽措施・共創資訊化美好未來！</p>
+        </div>
+        <div class="roc-banner-stamp">
+            <strong>v6 ß</strong>
+            <small>持續維護中</small>
+        </div>
+    </section>
+
+    <div class="roc-marquee" aria-label="最新公告跑馬燈">
+        <span>最新消息</span>
+        <div>
+            <p>{notices.join("　　｜　　")}</p>
+        </div>
+    </div>
+
+    <div class="roc-body-grid">
+        <aside class="roc-sidebar" aria-label="服務導覽側欄">
+            <div class="roc-side-title">◆ 服務e化導覽</div>
+            <nav>
+                {
+                    serviceLinks.map((item, index) => (
+                        <Link href={item.href} class={`roc-side-link roc-side-link-${index + 1}`}>
+                            {item.name}
+                        </Link>
+                    ))
+                }
+            </nav>
+
+            <div class="roc-side-box roc-login-box">
+                <strong>會員身分驗證登入系統</strong>
+                <label>帳號代碼</label>
+                <input value="visitor" readonly />
+                <label>服務密碼</label>
+                <input value="********" readonly />
+                <button type="button">進入e化服務</button>
+                <small>※ 本區為展示用途，請安心瀏覽。</small>
+            </div>
+
+            <div class="roc-side-box roc-stats-box">
+                <div class="roc-side-title mini">◎ 服務統計資訊</div>
+                <table>
+                    <tbody>
+                        <tr><th>今日訪客</th><td>00128</td></tr>
+                        <tr><th>累計瀏覽</th><td>884,021</td></tr>
+                        <tr><th>更新日期</th><td>115.05.16</td></tr>
+                        <tr><th>承辦狀態</th><td>正常</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </aside>
+
+        <section class="roc-content-frame">
+            <div class="roc-breadcrumb">首頁 ＞ 本站資訊服務 ＞ <slot name="section">內容瀏覽專區</slot></div>
+            <slot />
+        </section>
+
+        <aside class="roc-rightbar" aria-label="公告及友善連結">
+            <div class="roc-side-title red">★ 重要宣導事項</div>
+            <div class="roc-yellow-card">
+                <b>請注意！</b>
+                <p>為維護您的瀏覽權益，請務必詳閱各頁面公告事項，本網站誠摯為您服務。</p>
+            </div>
+            <div class="roc-side-box roc-mini-links">
+                <div class="roc-side-title mini">相關附件下載區</div>
+                <a href="/rss.xml">RSS 訂閱資訊</a>
+                <a href="/sitemap.xml">網站導覽檔案</a>
+                <a href="https://status.yhw.tw/">系統狀態查詢</a>
+            </div>
+        </aside>
+    </div>
+</div>

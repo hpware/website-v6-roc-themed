@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { SITE_DESCRIPTION } from "../../consts";
+import Layout from "../../layouts/Default.astro";
+
+const posts = (await getCollection("blog"))
+    .filter((post) => post.data.status === "published")
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Blog" description={SITE_DESCRIPTION}>
+    <span slot="section">公告資訊 ＞ 最新公告事項</span>
+
+    <section class="roc-panel">
+        <div class="roc-panel-heading">【最新公告資訊瀏覽專區】</div>
+        <div class="roc-home-notice m-[7px]">
+            <strong>※ 閱覽提醒：</strong>
+            以下資料依發布日期排序，請務必詳閱文章標題與公告日期，以維護您的知的權益。
+        </div>
+        <div class="overflow-x-auto p-[6px]">
+            <table class="roc-data-table" aria-label="文章公告列表">
+                <thead>
+                    <tr>
+                        <th class="w-[54px]">項次</th>
+                        <th>公告主旨</th>
+                        <th class="w-[128px]">發布日期</th>
+                        <th class="w-[96px]">處理狀態</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        posts.map((post, index) => (
+                            <tr>
+                                <td>{String(index + 1).padStart(3, "0")}</td>
+                                <td>
+                                    <a href={`/blog/${post.id}/`}>
+                                        {post.data.title}
+                                    </a>
+                                    <br />
+                                    <small>{post.data.description}</small>
+                                </td>
+                                <td><FormattedDate date={post.data.pubDate} /></td>
+                                <td><b>已公告</b></td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</Layout>

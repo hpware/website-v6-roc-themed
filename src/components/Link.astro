@@ -1,0 +1,25 @@
+---
+import { ExternalLinkIcon } from "@lucide/astro";
+interface Props {
+    href: string;
+    class?: string;
+    [key: string]: any;
+}
+const { href, class: linkClass = "", ...attrs } = Astro.props;
+---
+
+<a
+    href={href}
+    {...attrs}
+    class:list={["roc-link inline-block", "group", linkClass]}
+>
+    <span class="inline-flex items-center">
+        <slot />{
+            (href.startsWith("https://") ||
+                href.startsWith("http://") ||
+                href.startsWith("mailto:")) && (
+                <ExternalLinkIcon class="ml-0.5 h-4 w-4 group-hover:rotate-[-7deg]" />
+            )
+        }
+    </span>
+</a>

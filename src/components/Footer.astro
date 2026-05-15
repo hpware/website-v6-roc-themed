@@ -1,0 +1,76 @@
+---
+const today = new Date();
+import { SITE_NAME } from "../consts";
+import Link from "./Link.astro";
+import Socials from "./Socials.tsx";
+
+const linkColumns = [
+    [
+        { name: "本站首頁", href: "/" },
+        { name: "最新公告資訊", href: "/blog" },
+        { name: "關於本系統", href: "/about" },
+    ],
+    [
+        { name: "v5 網站", href: "https://v5.yuanhau.com" },
+        { name: "v4.1.3 網站", href: "https://v4-1-3.yuanhau.com" },
+        { name: "v4.1.2 舊版 Blog", href: "https://4-1-2.yuanhau.com/posts/" },
+        { name: "wp.yuanhau.com", href: "https://wp.yuanhau.com" },
+        {
+            name: "Website Source Code",
+            href: "https://github.com/hpware/website-v6",
+        },
+        { name: "Email", href: "mailto:hw+yhv6@yuanhau.com" },
+        { name: "Status Page", href: "https://status.yhw.tw/" },
+        { name: "Status Page (HL)", href: "https://yhw.tw/status" },
+    ],
+];
+---
+
+<footer class="roc-footer">
+    <div class="roc-panel-heading">網站版權與相關服務窗口資訊</div>
+    <div class="roc-footer-grid">
+        <section>
+            <img
+                src="/images/profile.jpg"
+                width="60"
+                height="60"
+                alt="Profile Picture"
+                draggable="false"
+            />
+            <div class="mt-[4px] text-xl font-bold text-[#000095] dark:text-cyan-300">Howard</div>
+            <p class="m-0 text-sm">
+                <i>
+                    Take risks in life. Your grand-grand-grandkids won't
+                    remember you, so why not go and try to take some risks and
+                    learn even more?
+                </i>
+            </p>
+            <Socials />
+        </section>
+
+        <section>
+            <h3 class="m-[2px_0_5px] text-lg font-bold">◆ 相關連結與服務窗口</h3>
+            <div class="grid gap-[4px] md:grid-cols-2">
+                {
+                    linkColumns.map((column) => (
+                        <div class="flex flex-col gap-[3px]">
+                            {column.map((item) => (
+                                <Link href={item.href} class="roc-link">
+                                    {item.name}
+                                </Link>
+                            ))}
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+    </div>
+
+    <div class="roc-footer-bottom">
+        &copy; {today.getFullYear()}
+        {SITE_NAME} ｜ 本網站採用 <Link
+            href="https://creativecommons.org/licenses/by-sa/4.0/"
+            >CC BY-SA 4.0</Link
+        > 授權條款釋出。 v6 ß ｜ 推動服務e化，誠摯為您服務！
+    </div>
+</footer>
